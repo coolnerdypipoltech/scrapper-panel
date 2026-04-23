@@ -3,6 +3,7 @@ export const DEFAULT_YT_ACTOR = 'grow_media/youtube-search-api';
 export const DEFAULT_TT_ACTOR = 'clockworks/tiktok-scraper';
 export const DEFAULT_FB_ACTOR = 'danek/facebook-search-ppr';
 export const DEFAULT_IG_ACTOR = 'apify/instagram-scraper';
+export const DEFAULT_IG_PROFILE_ACTOR = 'apify/instagram-profile-scraper';
 export const DEFAULT_GN_ACTOR = 'data_xplorer/google-news-scraper-fast';
 export const FB_PAGES_ACTOR_ID = 'apify/facebook-pages-scraper';
 /** Handles both flat dot-notation keys ("authorMeta.name") and nested objects */

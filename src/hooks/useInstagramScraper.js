@@ -3,7 +3,7 @@ import { useApp } from '../context/AppContext';
 import { getValue } from '../utils/helpers';
 import { buildSheet, downloadWorkbook } from '../utils/excelHelpers';
 import { IG_EXCEL_COLS } from '../config/columns';
-import { type } from '@testing-library/user-event/dist/type';
+import { DEFAULT_IG_PROFILE_ACTOR } from '../utils/helpers';
 
 export function useInstagramScraper() {
   const { apiKey, igActorId, fetchActorItems, tagItems, igData, setIgData } = useApp();
@@ -15,6 +15,7 @@ export function useInstagramScraper() {
   const [searchType, setSearchType] = useState('user');
   const [resultsType, setResultsType] = useState('posts');
   const [loading, setLoading] = useState(false);
+  const [profilesLoading, setProfilesLoading] = useState(false);
   const [error, setError] = useState('');
   const [exporting, setExporting] = useState(false);
 
@@ -107,6 +108,65 @@ export function useInstagramScraper() {
     }
   };
 
+  const fetchAuthorsProfiles = async () => {
+    if (!igData.length) {
+      setError('No hay datos de Instagram para enriquecer.');
+      return;
+    }
+    if (!apiKey.trim()) {
+      setError('Ingresa tu API Key de APIFY en Configuración.');
+      return;
+    }
+
+    const usernames = Array.from(
+      new Set(
+        igData
+          .map(item => String(item.ownerUsername || '').trim())
+          .filter(username => username && username !== 'Hashtag' && username !== 'Place')
+      )
+    );
+
+    if (!usernames.length) {
+      setError('No hay autores válidos en la tabla para consultar perfiles.');
+      return;
+    }
+
+    setProfilesLoading(true);
+    setError('');
+    try {
+      const profileItems = await fetchActorItems(DEFAULT_IG_PROFILE_ACTOR, {
+        includeAboutSection: false,
+        usernames,
+      });
+
+      const profilesByUsername = new Map(
+        profileItems
+          .map(profile => [String(profile.username || '').toLowerCase(), profile])
+          .filter(([username]) => username)
+      );
+
+      setIgData(prev => prev.map(item => {
+        const ownerUsername = String(item.ownerUsername || '').toLowerCase();
+        const profile = profilesByUsername.get(ownerUsername);
+        if (!profile) return item;
+
+        return {
+          ...item,
+          profileFullName: profile.fullName,
+          profilePicUrl: profile.profilePicUrl,
+          profileUsername: profile.username,
+          profilePostsCount: profile.postsCount,
+          profileFollowersCount: profile.followersCount,
+          profileFollowsCount: profile.followsCount,
+        };
+      }));
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setProfilesLoading(false);
+    }
+  };
+
   return {
     queries, setQueries,
     searchLimit, setSearchLimit,
@@ -114,7 +174,7 @@ export function useInstagramScraper() {
     searchType, setSearchType,
     startDate, setStartDate,
     resultsType, setResultsType,
-    loading, error, exporting,
-    run, exportExcel,
+    loading, profilesLoading, error, exporting,
+    run, fetchAuthorsProfiles, exportExcel,
   };
 }

@@ -117,6 +117,16 @@ export default function Cell({ col, item }) {
       );
     }
 
+    case 'ig-profile-thumbnail': {
+      const username = getValue(item, col.linkKey);
+      const href = username ? `https://www.instagram.com/${String(username)}/` : '#';
+      return (
+        <a href={String(href)} target="_blank" rel="noopener noreferrer">
+          <img className="cell-avatar" src={String(val)} alt="profile" loading="lazy" referrerPolicy="no-referrer" />
+        </a>
+      );
+    }
+
     case 'news-thumbnail': {
       const href = getValue(item, col.linkKey) || '#';
       return (
