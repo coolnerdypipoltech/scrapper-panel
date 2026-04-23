@@ -3,14 +3,17 @@ import { THUMB_COL_W } from '../utils/excelHelpers';
 // ─── UI column definitions ────────────────────────────────────────────────────
 
 export const YT_COLS = [
-  { key: 'id',                  label: '',              type: 'thumbnail'                   },
+  { key: 'thumbnailUrl',        label: '',              type: 'tt-thumbnail',  linkKey: 'url'              },
   { key: 'title',               label: 'Título',        type: 'text',   truncate: true      },
-  { key: 'channelName',         label: 'Canal',         type: 'text'                        },
+  { key: 'channelName',         label: 'Canal',         type: 'text', linkKey: 'channelUrl' },
+  { key: 'channelVideoCount',   label: 'No. de videos del Canal',  type: 'number', },
+  { key: 'channelViewCount',         label: 'Vistas del Canal',         type: 'number', },
+  { key: 'numberOfSubscribers',         label: 'Suscriptores',         type: 'number', },
   { key: 'viewCount',           label: 'Vistas',        type: 'number'                      },
   { key: 'likes',               label: 'Likes',         type: 'number'                      },
+  { key: 'commentsCount',       label: 'Comentarios',   type: 'number'                      },
   { key: 'date',                label: 'Fecha',         type: 'date'                        },
   { key: 'duration',            label: 'Duración',      type: 'text'                        },
-  { key: 'numberOfSubscribers', label: 'Suscriptores',  type: 'number'                      },
   { key: 'url',                 label: 'URL',           type: 'link'                        },
 ];
 
@@ -68,15 +71,15 @@ export const GN_COLS = [
 // ─── Excel export column definitions ─────────────────────────────────────────
 
 export const YT_EXCEL_COLS = [
-  { header: 'Thumbnail',    key: 'thumb',        width: THUMB_COL_W, srcKey: null                  },
-  { header: 'Título',       key: 'titulo',       width: 50,          srcKey: 'title'               },
-  { header: 'Canal',        key: 'canal',        width: 22,          srcKey: 'channelName'         },
-  { header: 'Vistas',       key: 'vistas',       width: 14,          srcKey: 'viewCount'           },
-  { header: 'Likes',        key: 'likes',        width: 12,          srcKey: 'likes'               },
-  { header: 'Fecha',        key: 'fecha',        width: 15,          srcKey: 'date'                },
-  { header: 'Duración',     key: 'duracion',     width: 12,          srcKey: 'duration'            },
-  { header: 'Suscriptores', key: 'suscriptores', width: 16,          srcKey: 'numberOfSubscribers' },
-  { header: 'URL',          key: 'url',          width: 50,          srcKey: 'url'                 },
+  { header: 'Thumbnail',    key: 'thumb',        width: THUMB_COL_W, srcKey: null              },
+  { header: 'Título',       key: 'titulo',       width: 50,          srcKey: 'title'           },
+  { header: 'Canal',        key: 'canal',        width: 22,          srcKey: 'channelName'     },
+  { header: 'Vistas',       key: 'vistas',       width: 14,          srcKey: 'viewCount'       },
+  { header: 'Likes',        key: 'likes',        width: 12,          srcKey: 'likes'           },
+  { header: 'Comentarios',  key: 'comentarios',  width: 14,          srcKey: 'commentsCount'   },
+  { header: 'Fecha',        key: 'fecha',        width: 15,          srcKey: 'date'            },
+  { header: 'Duración',     key: 'duracion',     width: 12,          srcKey: 'duration'        },
+  { header: 'URL',          key: 'url',          width: 50,          srcKey: 'url'             },
 ];
 
 export const TT_EXCEL_COLS = [

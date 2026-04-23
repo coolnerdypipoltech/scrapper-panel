@@ -7,7 +7,7 @@ import { YT_COLS } from '../config/columns';
 
 export default function YouTubeScraper() {
   const { ytData, setYtData } = useApp();
-  const { queries, setQueries, max, setMax, dateRange, setDateRange, loading, error, progress, exporting, run, exportExcel } = useYouTubeScraper();
+  const { queries, setQueries, max, setMax, order, setOrder, publishedAfter, setPublishedAfter, publishedBefore, setPublishedBefore, loading, error, progress, exporting, run, exportExcel } = useYouTubeScraper();
 
   return (
     <div className="panel card">
@@ -20,12 +20,22 @@ export default function YouTubeScraper() {
             <input type="number" min={1} max={500} className="num-input" value={max} onChange={e => setMax(Number(e.target.value))} />
           </label>
 
-          <select className="select-input" value={dateRange} onChange={e => setDateRange(e.target.value)}>
-            <option value="all">Cualquier fecha</option>
-            <option value="2d">Últimos 2 días</option>
-            <option value="3d">Últimos 3 días</option>
-            <option value="7d">Última semana</option>
+          <select className="select-input" value={order} onChange={e => setOrder(e.target.value)}>
+            <option value="relevance">Relevancia</option>
+            <option value="date">Fecha de subida</option>
+            <option value="viewCount">Vistas</option>
+            <option value="rating">Calificación</option>
           </select>
+
+          <label className="inline-label">
+            Desde
+            <input type="date" className="date-input" value={publishedAfter} onChange={e => setPublishedAfter(e.target.value)} />
+          </label>
+
+          <label className="inline-label">
+            Hasta
+            <input type="date" className="date-input" value={publishedBefore} onChange={e => setPublishedBefore(e.target.value)} />
+          </label>
 
           <button className="btn-run" onClick={run} disabled={loading}>
             {loading ? <><span className="spinner" />Scrapeando…</> : '▶ Scrapear'}

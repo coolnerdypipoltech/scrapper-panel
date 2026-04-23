@@ -1,5 +1,5 @@
 export const APIFY_BASE       = 'https://api.apify.com/v2';
-export const DEFAULT_YT_ACTOR = 'apidojo/youtube-scraper';
+export const DEFAULT_YT_ACTOR = 'grow_media/youtube-search-api';
 export const DEFAULT_TT_ACTOR = 'clockworks/tiktok-scraper';
 export const DEFAULT_FB_ACTOR = 'danek/facebook-search-ppr';
 export const DEFAULT_IG_ACTOR = 'apify/instagram-scraper';
