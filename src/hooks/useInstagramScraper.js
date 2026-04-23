@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { getValue } from '../utils/helpers';
 import { buildSheet, downloadWorkbook } from '../utils/excelHelpers';
 import { IG_EXCEL_COLS } from '../config/columns';
+import { type } from '@testing-library/user-event/dist/type';
 
 export function useInstagramScraper() {
   const { apiKey, igActorId, fetchActorItems, tagItems, igData, setIgData } = useApp();
@@ -42,7 +43,16 @@ export function useInstagramScraper() {
             }
           }
         }
-        setIgData(prev => [...prev, ...tagItems(items)]);
+        if(searchType === "hashtag") {
+          setIgData(prev => [...prev, ...tagItems(normalizeDataHT(items))]);
+        }else{
+          if(searchType === "place") {
+            setIgData(prev => [...prev, ...tagItems(normalizeDataPlace(items))]);
+          }else{
+            setIgData(prev => [...prev, ...tagItems(items)]);
+          }
+        }
+        
       }
     } catch (err) {
       setError(err.message);
@@ -50,6 +60,37 @@ export function useInstagramScraper() {
       setLoading(false);
     }
   };
+
+    const normalizeDataPlace = (data) => {
+    let tempData = [];
+    data.forEach(item => {
+      let tempObject = {
+        ownerUsername: "Place", 
+        ownerFullName: item.name,
+        caption: item.category,
+        likesCount: item.posts.length,
+        locationName: item.location_address,
+        type: "place",
+        url: item.inputUrl,
+      }
+      tempData.push(tempObject);
+    });
+    return tempData;
+  }
+
+  const normalizeDataHT = (data) => {
+    let tempData = [];
+    data.forEach(item => {
+      let tempObject = {
+        ownerUsername: "Hashtag", 
+        ownerFullName: item.name,
+        likesCount: item.postsCount,
+        type: "hashtag",
+      }
+      tempData.push(tempObject);
+    });
+    return tempData;
+  }
 
   const exportExcel = async () => {
     setExporting(true);

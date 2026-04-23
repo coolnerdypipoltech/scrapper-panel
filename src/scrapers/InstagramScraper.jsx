@@ -27,7 +27,6 @@ export default function InstagramScraper() {
           <select className="select-input" value={searchType} onChange={e => setSearchType(e.target.value)}>
             <option value="user">Usuario</option>
             <option value="hashtag">Hashtag</option>
-            <option value="place">Lugar</option>
           </select>
 
           <select className="select-input" value={resultsType} onChange={e => setResultsType(e.target.value)}>
