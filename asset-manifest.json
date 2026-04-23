@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/scrapper-panel/static/css/main.97a59e5d.css",
+    "main.js": "/scrapper-panel/static/js/main.2ab4c2e6.js",
+    "static/js/223.44292035.chunk.js": "/scrapper-panel/static/js/223.44292035.chunk.js",
+    "static/js/453.2bbc52e4.chunk.js": "/scrapper-panel/static/js/453.2bbc52e4.chunk.js",
+    "index.html": "/scrapper-panel/index.html",
+    "main.97a59e5d.css.map": "/scrapper-panel/static/css/main.97a59e5d.css.map",
+    "main.2ab4c2e6.js.map": "/scrapper-panel/static/js/main.2ab4c2e6.js.map",
+    "223.44292035.chunk.js.map": "/scrapper-panel/static/js/223.44292035.chunk.js.map",
+    "453.2bbc52e4.chunk.js.map": "/scrapper-panel/static/js/453.2bbc52e4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.97a59e5d.css",
+    "static/js/main.2ab4c2e6.js"
+  ]
+}
