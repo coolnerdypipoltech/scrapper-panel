@@ -1,10 +1,10 @@
 export const APIFY_BASE       = 'https://api.apify.com/v2';
-export const DEFAULT_YT_ACTOR = 'bernardo/youtube-scraper';
+export const DEFAULT_YT_ACTOR = 'apidojo/youtube-scraper';
 export const DEFAULT_TT_ACTOR = 'clockworks/tiktok-scraper';
-export const DEFAULT_FB_ACTOR = 'apify/facebook-search-scraper';
+export const DEFAULT_FB_ACTOR = 'danek/facebook-search-ppr';
 export const DEFAULT_IG_ACTOR = 'apify/instagram-scraper';
-export const DEFAULT_GN_ACTOR = '';
-
+export const DEFAULT_GN_ACTOR = 'data_xplorer/google-news-scraper-fast';
+export const FB_PAGES_ACTOR_ID = 'apify/facebook-pages-scraper';
 /** Handles both flat dot-notation keys ("authorMeta.name") and nested objects */
 export const getValue = (obj, key) => {
   if (!obj) return undefined;

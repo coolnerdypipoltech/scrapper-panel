@@ -11,7 +11,7 @@ export default function FacebookScraper() {
     queries, setQueries, max, setMax,
     searchType, setSearchType, recentPosts, setRecentPosts,
     startDate, setStartDate, endDate, setEndDate,
-    loading, error, exporting, run, exportExcel,
+    loading, error, exporting, enriching, run, exportExcel, enrichPages,
   } = useFacebookScraper();
 
   return (
@@ -56,6 +56,9 @@ export default function FacebookScraper() {
           {fbData.length > 0 && (
             <>
               <button className="btn-secondary" onClick={() => setFbData([])}>Limpiar</button>
+              <button className="btn-secondary" onClick={enrichPages} disabled={loading || enriching}>
+                {enriching ? <><span className="spinner" />Páginas…</> : '＋ Likes y categorías'}
+              </button>
               <button className="btn-export" onClick={exportExcel} disabled={exporting}>
                 {exporting ? <><span className="spinner" />Exportando…</> : '↓ Excel'}
               </button>

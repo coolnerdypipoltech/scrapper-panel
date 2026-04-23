@@ -9,19 +9,14 @@ export function AppProvider({ children }) {
   // ─── Settings ──────────────────────────────────────────────────────────────
   const [apiKey,       setApiKey]       = useState(() => localStorage.getItem('apify_key') || '');
   const [apiVisible,   setApiVisible]   = useState(false);
-  const [ytActorId,    setYtActorId]    = useState(() => localStorage.getItem('yt_actor') || DEFAULT_YT_ACTOR);
-  const [ttActorId,    setTtActorId]    = useState(() => localStorage.getItem('tt_actor') || DEFAULT_TT_ACTOR);
-  const [fbActorId,    setFbActorId]    = useState(() => localStorage.getItem('fb_actor') || DEFAULT_FB_ACTOR);
-  const [igActorId,    setIgActorId]    = useState(() => localStorage.getItem('ig_actor') || DEFAULT_IG_ACTOR);
-  const [gnActorId,    setGnActorId]    = useState(() => localStorage.getItem('gn_actor') || DEFAULT_GN_ACTOR);
+  const [ytActorId,    setYtActorId]    = useState(() =>  DEFAULT_YT_ACTOR);
+  const [ttActorId,    setTtActorId]    = useState(() =>  DEFAULT_TT_ACTOR);
+  const [fbActorId,    setFbActorId]    = useState(() =>  DEFAULT_FB_ACTOR);
+  const [igActorId,    setIgActorId]    = useState(() =>  DEFAULT_IG_ACTOR);
+  const [gnActorId,    setGnActorId]    = useState(() =>  DEFAULT_GN_ACTOR);
   const [settingsOpen, setSettingsOpen] = useState(!localStorage.getItem('apify_key'));
 
   useEffect(() => { apiKey ? localStorage.setItem('apify_key', apiKey) : localStorage.removeItem('apify_key'); }, [apiKey]);
-  useEffect(() => { localStorage.setItem('yt_actor', ytActorId); }, [ytActorId]);
-  useEffect(() => { localStorage.setItem('tt_actor', ttActorId); }, [ttActorId]);
-  useEffect(() => { localStorage.setItem('fb_actor', fbActorId); }, [fbActorId]);
-  useEffect(() => { localStorage.setItem('ig_actor', igActorId); }, [igActorId]);
-  useEffect(() => { gnActorId ? localStorage.setItem('gn_actor', gnActorId) : localStorage.removeItem('gn_actor'); }, [gnActorId]);
 
   // ─── Shared scraper data (needed for stats + exportAll) ────────────────────
   const [ytData, setYtData] = useState([]);

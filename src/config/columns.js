@@ -31,9 +31,11 @@ export const TT_COLS = [
 export const FB_COLS = [
   { key: 'author.profile_picture_url', label: '',            type: 'fb-thumbnail', linkKey: 'author.profile_picture_url' },
   { key: 'author.name',           label: 'Autor',       type: 'fb-author',    linkKey: 'author.url' },
+  { key: 'pageCategoriesLabel',   label: 'Categorías',  type: 'text',         truncate: true               },
   { key: 'message',              label: 'Texto',       type: 'text',         truncate: true               },
   { key: 'reactions',             label: 'Reacciones',  type: 'reactions'                                  },
   { key: 'reactions_count',        label: 'Total',       type: 'number'                                     },
+  { key: 'pageLikes',             label: 'Likes página', type: 'number'                                     },
   { key: 'comments_count',         label: 'Comentarios', type: 'number'                                     },
   { key: 'timestamp',             label: 'Fecha',       type: 'date'                                       },
   { key: 'url',                   label: 'URL',         type: 'link'                                       },
@@ -94,6 +96,7 @@ export const TT_EXCEL_COLS = [
 export const FB_EXCEL_COLS = [
   { header: 'Avatar',       key: 'avatar',      width: THUMB_COL_W, srcKey: null            },
   { header: 'Autor',        key: 'autor',       width: 25,          srcKey: 'author.name'   },
+  { header: 'Categorías',   key: 'categorias',  width: 26,          srcKey: 'pageCategoriesLabel' },
   { header: 'Texto',        key: 'texto',       width: 60,          srcKey: 'postText'      },
   {
     header: 'Reacciones', key: 'reacciones', width: 30, srcKey: 'reactions',
@@ -102,6 +105,7 @@ export const FB_EXCEL_COLS = [
       : (v || ''),
   },
   { header: 'Total React.', key: 'totalReact',  width: 13, srcKey: 'reactionsCount'                                              },
+  { header: 'Likes página', key: 'likesPagina', width: 14, srcKey: 'pageLikes'                                                    },
   { header: 'Comentarios',  key: 'comentarios', width: 14, srcKey: 'commentsCount'                                               },
   { header: 'Fecha',        key: 'fecha',       width: 20, srcKey: 'timestamp', transform: v => v ? new Date(Number(v)).toLocaleDateString('es') : '' },
   { header: 'URL',          key: 'url_fb',      width: 60, srcKey: 'url'                                                         },
