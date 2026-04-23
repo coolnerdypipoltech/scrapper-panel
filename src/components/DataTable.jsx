@@ -2,7 +2,7 @@ import React from 'react';
 import Cell from './Cell';
 
 export default function DataTable({ data, columns, onDelete }) {
-    console.log('Rendering DataTable with data:', data);
+  console.log(data);
   return (
     <div className="table-wrapper">
       <table className="data-table">

@@ -8,6 +8,7 @@ export function useInstagramScraper() {
   const { apiKey, igActorId, fetchActorItems, tagItems, igData, setIgData } = useApp();
 
   const [queries, setQueries] = useState([]);
+  const [startDate,   setStartDate]   = useState('');
   const [searchLimit, setSearchLimit] = useState(10);
   const [resultsLimit, setResultsLimit] = useState(100);
   const [searchType, setSearchType] = useState('user');
@@ -30,8 +31,17 @@ export function useInstagramScraper() {
           search: query,
           searchLimit,
           searchType,
+          onlyPostsNewerThan: startDate || undefined,
         };
         const items = await fetchActorItems(igActorId, input);
+        if(items.length === 1) {
+          if(Object.hasOwn(items[0], "error")) {
+            if(items[0].error === "no_items"){
+              setError('No se encontraron resultados para la búsqueda: ' + query);
+              continue;
+            }
+          }
+        }
         setIgData(prev => [...prev, ...tagItems(items)]);
       }
     } catch (err) {
@@ -61,6 +71,7 @@ export function useInstagramScraper() {
     searchLimit, setSearchLimit,
     resultsLimit, setResultsLimit,
     searchType, setSearchType,
+    startDate, setStartDate,
     resultsType, setResultsType,
     loading, error, exporting,
     run, exportExcel,

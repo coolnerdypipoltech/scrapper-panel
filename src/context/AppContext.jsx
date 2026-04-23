@@ -47,7 +47,7 @@ export function AppProvider({ children }) {
   // ─── Stats ─────────────────────────────────────────────────────────────────
   const ytViews     = ytData.reduce((s, i) => s + (Number(i.viewCount)      || 0), 0);
   const ttPlays     = ttData.reduce((s, i) => s + (Number(i.playCount)      || 0), 0);
-  const fbReactions = fbData.reduce((s, i) => s + (Number(i.reactionsCount) || 0), 0);
+  const fbReactions = fbData.reduce((s, i) => s + (Number(i.reactions_count) || 0), 0);
   const igLikes     = igData.reduce((s, i) => s + (Number(i.likesCount)     || 0), 0);
   const gnArticles  = gnData.length;
   const total       = ytViews + ttPlays + fbReactions + igLikes + gnArticles;

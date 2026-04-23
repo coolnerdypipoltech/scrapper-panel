@@ -35,6 +35,38 @@ function ThumbnailWithFallback({ href, urls, alt, className, referrerPolicy = 'n
   );
 }
 
+function GnThumbnail({ url, href }) {
+  const [src, setSrc] = React.useState(null);
+  const [failed, setFailed] = React.useState(false);
+
+  React.useEffect(() => {
+    if (!url) return;
+    let cancelled = false;
+    fetch(url)
+      .then(res => {
+        const ct = res.headers.get('content-type') || 'image/jpeg';
+        return res.text().then(b64 => ({ b64, ct }));
+      })
+      .then(({ b64, ct }) => {
+        if (cancelled) return;
+        // Strip any data: prefix the server may already include
+        const raw = b64.replace(/^data:[^;]+;base64,/, '').trim();
+        const mime = ct.split(';')[0].trim();
+        setSrc(`data:${mime};base64,${raw}`);
+      })
+      .catch(() => { if (!cancelled) setFailed(true); });
+    return () => { cancelled = true; };
+  }, [url]);
+
+  if (failed) return <a href={String(href || '#')} target="_blank" rel="noopener noreferrer" className="cell-link" title="Abrir noticia">↗</a>;
+  if (!src)   return <span className="cell-null cell-loading">…</span>;
+  return (
+    <a href={String(href || '#')} target="_blank" rel="noopener noreferrer">
+      <img className="cell-thumbnail" src={src} alt="news" loading="lazy" />
+    </a>
+  );
+}
+
 export default function Cell({ col, item }) {
   const val = getValue(item, col.key);
   if (val == null || val === '') return <span className="cell-null">—</span>;
@@ -92,6 +124,11 @@ export default function Cell({ col, item }) {
           <img className="cell-thumbnail" src={String(val)} alt="news" loading="lazy" referrerPolicy="no-referrer" />
         </a>
       );
+    }
+
+    case 'gn-thumbnail': {
+      const href = getValue(item, col.linkKey) || '#';
+      return <GnThumbnail url={String(val)} href={href} />;
     }
 
     case 'fb-author': {

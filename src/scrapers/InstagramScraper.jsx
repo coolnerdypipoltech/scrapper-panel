@@ -12,6 +12,7 @@ export default function InstagramScraper() {
     searchLimit, setSearchLimit,
     resultsLimit, setResultsLimit,
     searchType, setSearchType,
+    startDate, setStartDate,
     resultsType, setResultsType,
     loading, error, exporting,
     run, exportExcel,
@@ -42,6 +43,11 @@ export default function InstagramScraper() {
           <label className="inline-label">
             Resultados
             <input type="number" min={1} max={500} className="num-input" value={resultsLimit} onChange={e => setResultsLimit(Number(e.target.value))} />
+          </label>
+
+          <label className="inline-label">
+            Desde
+            <input type="date" className="date-input" value={startDate} onChange={e => setStartDate(e.target.value)} />
           </label>
 
           <button className="btn-run" onClick={run} disabled={loading}>
