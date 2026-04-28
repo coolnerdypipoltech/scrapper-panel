@@ -30,7 +30,7 @@ export function useYouTubeScraper() {
           maxResults: max,
           order,
           q: queries[idx],
-          useFilters: false,
+          useFilters: true,
           videoDefinition: 'any',
           videoDuration: 'any',
           videoLicense: 'any',

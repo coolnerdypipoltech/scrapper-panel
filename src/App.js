@@ -18,8 +18,8 @@ function Shell() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1><span className="header-icon">🔍</span> Scraper Panel</h1>
-        <span className="header-sub">YouTube · TikTok · Facebook · Instagram · Google News · APIFY</span>
+        <h1><span className="header-icon">🔍</span> Cooltural Listening</h1>
+        <span className="header-sub">YouTube · TikTok · Facebook · Instagram · Google News</span>
       </header>
 
       <Settings />

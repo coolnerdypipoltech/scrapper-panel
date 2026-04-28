@@ -2,7 +2,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:          #0d0f1a;
+--bg:          #0d0f1a;
   --bg-card:     #151826;
   --bg-input:    #1c2035;
   --border:      #252a45;
@@ -611,3 +611,237 @@ input::placeholder { color: var(--text-dim); }
 }
 .cell-author-link:hover { color: var(--accent); }
 
+/* ── Bubble Chart ────────────────────────────────────────────────────── */
+.bubble-chart-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px 12px;
+  margin-bottom: 12px;
+}
+
+.bubble-chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.chart-type-selector {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.chart-type-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text-dim);
+  font-size: .75rem;
+  font-weight: 600;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background .15s, border-color .15s, color .15s;
+  white-space: nowrap;
+}
+
+.chart-type-btn:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.chart-type-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.bubble-axis-label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: .72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  color: var(--text-dim);
+}
+
+.bubble-axis-label select {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: .82rem;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+  transition: border-color .15s;
+  min-width: 140px;
+}
+
+.bubble-axis-label select:focus,
+.bubble-axis-label select:hover {
+  border-color: var(--accent);
+}
+
+.bubble-chart-canvas {
+  height: 320px;
+  position: relative;
+}
+
+/* ── PrimeReact DataTable overrides ─────────────────────────────────── */
+.table-wrapper .p-datatable {
+  font-size: .82rem;
+  background: transparent;
+}
+
+.table-wrapper .p-datatable .p-datatable-header {
+  background: var(--bg-card);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 10px 14px;
+}
+
+.table-wrapper .p-datatable .p-datatable-thead > tr > th {
+  background: #1a1f36;
+  color: var(--text-dim);
+  font-weight: 600;
+  font-size: .75rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  padding: 10px 14px;
+  border-color: var(--border);
+  white-space: nowrap;
+}
+
+.table-wrapper .p-datatable .p-datatable-thead > tr > th .p-sortable-column-icon {
+  color: var(--text-dim);
+}
+
+.table-wrapper .p-datatable .p-sortable-column:not(.p-highlight):hover {
+  background: rgba(255,255,255,.04);
+  color: var(--text);
+}
+
+.table-wrapper .p-datatable .p-highlight {
+  background: rgba(108,99,255,.15) !important;
+  color: var(--accent) !important;
+}
+
+.table-wrapper .p-datatable .p-highlight .p-sortable-column-icon {
+  color: var(--accent) !important;
+}
+
+.table-wrapper .p-datatable .p-datatable-tbody > tr {
+  background: transparent;
+  color: var(--text);
+}
+
+.table-wrapper .p-datatable .p-datatable-tbody > tr > td {
+  padding: 9px 14px;
+  border-color: var(--border);
+  vertical-align: middle;
+  max-width: 240px;
+}
+
+.table-wrapper .p-datatable .p-datatable-tbody > tr:hover > td {
+  background: rgba(255,255,255,.025);
+}
+
+.table-wrapper .p-datatable .p-datatable-tbody > tr:last-child > td {
+  border-bottom: none;
+}
+
+.table-wrapper .p-datatable .p-datatable-emptymessage td {
+  color: var(--text-dim);
+  text-align: center;
+}
+
+/* Paginator */
+.table-wrapper .p-paginator {
+  background: var(--bg-card);
+  border: none;
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 8px 14px;
+}
+
+.table-wrapper .p-paginator .p-paginator-pages .p-paginator-page {
+  color: var(--text-dim);
+  border-radius: var(--radius-sm);
+  min-width: 2rem;
+  height: 2rem;
+}
+
+.table-wrapper .p-paginator .p-paginator-page.p-highlight {
+  background: var(--accent) !important;
+  color: #fff !important;
+}
+
+.table-wrapper .p-paginator .p-paginator-element:not(.p-disabled):hover {
+  background: rgba(108,99,255,.15);
+  color: var(--text);
+}
+
+.table-wrapper .p-paginator .p-paginator-element {
+  color: var(--text-dim);
+}
+
+.table-wrapper .p-paginator .p-dropdown {
+  background: var(--bg-input);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.table-wrapper .p-paginator .p-dropdown .p-dropdown-label {
+  color: var(--text);
+}
+
+/* Search header */
+.dt-header {
+  display: flex;
+  align-items: center;
+}
+
+.dt-header .p-input-icon-left {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dt-header .p-input-icon-left > i {
+  position: absolute;
+  left: 10px;
+  color: var(--text-dim);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dt-header .p-inputtext {
+  background: var(--bg-input);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  padding: 6px 10px 6px 32px;
+  font-size: .82rem;
+  outline: none;
+  transition: border-color .15s;
+}
+
+.dt-header .p-inputtext:focus {
+  border-color: var(--accent);
+}
+
+/* Thumbnail & avatar cells in PrimeReact table */
+.table-wrapper .p-datatable .p-datatable-tbody > tr > td:has(.cell-thumbnail),
+.table-wrapper .p-datatable .p-datatable-tbody > tr > td:has(.cell-avatar) {
+  padding: 6px 14px;
+}
+
+.p-paginator{
+  align-self: center;
+  margin-left: 10px;
+}

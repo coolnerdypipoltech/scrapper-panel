@@ -22,11 +22,10 @@ export default function FacebookScraper() {
 
           <select className="select-input" value={searchType} onChange={e => setSearchType(e.target.value)}>
             <option value="posts">Posts</option>
-            <option value="videos">Videos</option>
-            <option value="photos">Fotos</option>
-            <option value="people">Personas</option>
-            <option value="groups">Grupos</option>
+            <option value="places">Lugares</option>
+            
             <option value="pages">Páginas</option>
+            <option value="global">Global</option>
           </select>
 
           <label className="inline-label">

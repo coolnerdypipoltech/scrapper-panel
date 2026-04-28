@@ -64,11 +64,13 @@ export const FB_COLS = [
     type: "text",
     truncate: true,
   },
+  { key: "pageLikes", label: "Likes página", type: "number" },
   { key: "message", label: "Texto", type: "text", truncate: true },
   { key: "reactions", label: "Reacciones", type: "reactions" },
   { key: "reactions_count", label: "Total", type: "number" },
-  { key: "pageLikes", label: "Likes página", type: "number" },
+  
   { key: "comments_count", label: "Comentarios", type: "number" },
+  { key: "reshare_count", label: "Compartidos", type: "number" },
   { key: "timestamp", label: "Fecha", type: "date" },
   { key: "url", label: "URL", type: "link" },
 ];
