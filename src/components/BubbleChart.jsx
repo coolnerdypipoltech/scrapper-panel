@@ -137,10 +137,10 @@ export default function BubbleChart({ data, columns }) {
       datasets: [{
         label: 'Datos',
         data: points,
-        backgroundColor: 'rgba(108,99,255,0.45)',
-        borderColor: 'rgba(108,99,255,0.9)',
+        backgroundColor: '#EE5243',
+        borderColor: '#EE5243',
         borderWidth: 1,
-        hoverBackgroundColor: 'rgba(128,120,255,0.7)',
+        hoverBackgroundColor: '#FF7060',
       }],
     };
   }, [data, chartType, xKey, yKey, rKey, numericCols, columns, linkKey]);

@@ -9,17 +9,26 @@ import InstagramScraper from './scrapers/InstagramScraper';
 import GoogleNewsScraper from './scrapers/GoogleNewsScraper';
 import MasterScraper from './scrapers/MasterScraper';
 import './App.css';
+import cnpLogo from "./assets/cnp.png";
 
+import 'primeicons/primeicons.css';
+        
 function Shell() {
   const [activeTab, setActiveTab] = useState('youtube');
+  const [lightMode, setLightMode] = useState(false);
   const { ytData, ttData, fbData, igData, gnData, exporting, exportAll } = useApp();
   const masterCount = ytData.length + ttData.length + fbData.length + igData.length + gnData.length;
+
+  React.useEffect(() => {
+    document.body.classList.toggle('theme-light', lightMode);
+  }, [lightMode]);
 
   return (
     <div className="app">
       <header className="app-header">
-        <h1><span className="header-icon">🔍</span> Cooltural Listening</h1>
-        <span className="header-sub">YouTube · TikTok · Facebook · Instagram · Google News</span>
+        <img src={cnpLogo} alt="CNP Logo" style={{height: "50px"}} />
+        <h1 style={{alignSelf:"center"}}>Cooltural Listening</h1>
+
       </header>
 
       <Settings />
@@ -27,26 +36,32 @@ function Shell() {
 
       <div className="tab-bar">
         <button className={`tab-btn ${activeTab === 'master'   ? 'active' : ''}`} onClick={() => setActiveTab('master')}>
-          🌐 Maestro {masterCount > 0 && <span className="badge">{masterCount}</span>}
+          <i className="pi pi-globe color-accent"></i>
+          Maestro {masterCount > 0 && <span className="badge">{masterCount}</span>}
         </button>
         <button className={`tab-btn ${activeTab === 'youtube'  ? 'active' : ''}`} onClick={() => setActiveTab('youtube')}>
-          📺 YouTube {ytData.length > 0 && <span className="badge">{ytData.length}</span>}
+          <i className="pi pi-youtube color-accent"></i>
+          YouTube {ytData.length > 0 && <span className="badge">{ytData.length}</span>}
         </button>
         <button className={`tab-btn ${activeTab === 'tiktok'   ? 'active' : ''}`} onClick={() => setActiveTab('tiktok')}>
-          🎵 TikTok {ttData.length > 0 && <span className="badge">{ttData.length}</span>}
+          <i className="pi pi-tiktok color-accent"></i>
+          TikTok {ttData.length > 0 && <span className="badge">{ttData.length}</span>}
         </button>
         <button className={`tab-btn ${activeTab === 'facebook' ? 'active' : ''}`} onClick={() => setActiveTab('facebook')}>
-          📘 Facebook {fbData.length > 0 && <span className="badge">{fbData.length}</span>}
+          <i className="pi pi-facebook color-accent"></i>
+          Facebook {fbData.length > 0 && <span className="badge">{fbData.length}</span>}
         </button>
         <button className={`tab-btn ${activeTab === 'instagram' ? 'active' : ''}`} onClick={() => setActiveTab('instagram')}>
-          📸 Instagram {igData.length > 0 && <span className="badge">{igData.length}</span>}
+          <i className="pi pi-instagram color-accent"></i>
+          Instagram {igData.length > 0 && <span className="badge">{igData.length}</span>}
         </button>
         <button className={`tab-btn ${activeTab === 'google-news' ? 'active' : ''}`} onClick={() => setActiveTab('google-news')}>
-          📰 Google News {gnData.length > 0 && <span className="badge">{gnData.length}</span>}
+          <i className="pi pi-book color-accent"></i>
+          Google News {gnData.length > 0 && <span className="badge">{gnData.length}</span>}
         </button>
         {(ytData.length > 0 || ttData.length > 0 || fbData.length > 0 || igData.length > 0 || gnData.length > 0) && (
           <button className="btn-export-all" onClick={exportAll} disabled={exporting}>
-            {exporting ? <><span className="spinner" />Exportando…</> : '📥 Exportar todo'}
+            {exporting ? <><span className="spinner" />Exportando…</> :  <><i className="pi pi-file-export color-accent" style={{paddingRight: "2px", top: "2px", position: "relative"}}></i> Exportar todo</>}
           </button>
         )}
       </div>

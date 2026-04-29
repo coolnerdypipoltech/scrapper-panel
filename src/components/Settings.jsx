@@ -15,7 +15,7 @@ export default function Settings() {
   return (
     <section className="card settings-section">
       <button className="settings-toggle" onClick={() => setSettingsOpen(o => !o)}>
-        <span>⚙️ Configuración</span>
+        <span>Configuración</span>
         <span className="chevron">{settingsOpen ? '▲' : '▼'}</span>
       </button>
 
