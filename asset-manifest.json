@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/scrapper-panel/static/css/main.36def109.css",
-    "main.js": "/scrapper-panel/static/js/main.0b0fe9b9.js",
+    "main.css": "/scrapper-panel/static/css/main.95bfc917.css",
+    "main.js": "/scrapper-panel/static/js/main.881b3db9.js",
     "static/js/223.44292035.chunk.js": "/scrapper-panel/static/js/223.44292035.chunk.js",
     "static/js/453.2bbc52e4.chunk.js": "/scrapper-panel/static/js/453.2bbc52e4.chunk.js",
     "static/media/InterVariable-Italic.woff2": "/scrapper-panel/static/media/InterVariable-Italic.e295f70fe3e2df296c7b.woff2",
@@ -12,13 +12,13 @@
     "static/media/primeicons.ttf": "/scrapper-panel/static/media/primeicons.a5c2a53d1ff7a9ff5933.ttf",
     "static/media/primeicons.woff2": "/scrapper-panel/static/media/primeicons.024b32cc7bf399b1a847.woff2",
     "index.html": "/scrapper-panel/index.html",
-    "main.36def109.css.map": "/scrapper-panel/static/css/main.36def109.css.map",
-    "main.0b0fe9b9.js.map": "/scrapper-panel/static/js/main.0b0fe9b9.js.map",
+    "main.95bfc917.css.map": "/scrapper-panel/static/css/main.95bfc917.css.map",
+    "main.881b3db9.js.map": "/scrapper-panel/static/js/main.881b3db9.js.map",
     "223.44292035.chunk.js.map": "/scrapper-panel/static/js/223.44292035.chunk.js.map",
     "453.2bbc52e4.chunk.js.map": "/scrapper-panel/static/js/453.2bbc52e4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.36def109.css",
-    "static/js/main.0b0fe9b9.js"
+    "static/css/main.95bfc917.css",
+    "static/js/main.881b3db9.js"
   ]
 }
