@@ -1,6 +1,34 @@
 /* ── Reset & Variables ───────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ── Footer ─────────────────────────────────────────────────────────── */
+.app-footer {
+  background: var(--bg-card);
+  color: var(--accent);
+  text-align: center;
+  height: 70px;
+  padding: 14px 24px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.app-footer__brand {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: .5px;
+  color: var(--accent);
+}
+.app-footer__copy {
+  font-size: 12px;
+  opacity: .85;
+}
+
 :root {
   --bg:          #FAFAFA;
   --bg-card:     #e4e4e4;
@@ -52,17 +80,22 @@ body.theme-light {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
   font-size: 14px;
   line-height: 1.5;
   min-height: 100vh;
 }
+
+
 
 /* ── Layout ──────────────────────────────────────────────────────────── */
 .app {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 20px 60px;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  flex-direction: column;
 }
 
 /* ── Header ──────────────────────────────────────────────────────────── */
@@ -239,7 +272,7 @@ input::placeholder { color: var(--text-dim); }
 .stat-total { background: var(--total-dim); border-color: var(--total); }
 
 .stat-platform { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .5px; color: var(--alt-text); }
-.stat-value    { font-size: 2rem; font-weight: 700; color: var(--alt-text); line-height: 1.1; }
+.stat-value    { font-size: 2rem; font-weight: 700; color: var(--alt-text); line-height: 1.1; font-family: "termina", 'Segoe UI', system-ui, -apple-system, sans-serif; }
 .stat-meta     { font-size: .78rem; color: var(--alt-text); }
 
 
@@ -615,15 +648,15 @@ input::placeholder { color: var(--text-dim); }
   justify-content: center;
   width: 28px;
   height: 28px;
-  background: rgba(108,99,255,.12);
-  border: 1px solid rgba(108,99,255,.3);
+  background: rgba(255,92,92,.1);
+  border: 1px solid rgba(255,92,92,.3);
   border-radius: var(--radius-sm);
   color: var(--accent);
   text-decoration: none;
   font-size: .85rem;
   transition: background .15s;
 }
-.cell-link:hover { background: rgba(108,99,255,.3); }
+.cell-link:hover { background: rgba(255,92,92,.3); }
 
 /* ── Thumbnail ───────────────────────────────────────────────────────── */
 .cell-thumbnail {
@@ -990,4 +1023,8 @@ body.theme-light .dt-header .p-inputtext:focus {
 body.theme-light .chart-type-btn:hover {
   border-color: var(--accent);
   color: var(--text);
+}
+
+.p-datatable-wrapper{
+  scrollbar-color: var(--accent) var(--bg-card); 
 }

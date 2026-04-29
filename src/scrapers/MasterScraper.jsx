@@ -6,11 +6,11 @@ import DataTable from '../components/DataTable';
 import { YT_COLS, TT_COLS, FB_COLS, IG_COLS, GN_COLS } from '../config/columns';
 
 const PLATFORM_SECTIONS = [
-  { key: 'youtube', label: '📺 YouTube', dataKey: 'ytData', setterKey: 'setYtData', columns: YT_COLS },
-  { key: 'tiktok', label: '🎵 TikTok', dataKey: 'ttData', setterKey: 'setTtData', columns: TT_COLS },
-  { key: 'facebook', label: '📘 Facebook', dataKey: 'fbData', setterKey: 'setFbData', columns: FB_COLS },
-  { key: 'instagram', label: '📸 Instagram', dataKey: 'igData', setterKey: 'setIgData', columns: IG_COLS },
-  { key: 'google-news', label: '📰 Google News', dataKey: 'gnData', setterKey: 'setGnData', columns: GN_COLS },
+  { key: 'youtube', label: 'YouTube', dataKey: 'ytData', setterKey: 'setYtData', columns: YT_COLS },
+  { key: 'tiktok', label: 'TikTok', dataKey: 'ttData', setterKey: 'setTtData', columns: TT_COLS },
+  { key: 'facebook', label: 'Facebook', dataKey: 'fbData', setterKey: 'setFbData', columns: FB_COLS },
+  { key: 'instagram', label: 'Instagram', dataKey: 'igData', setterKey: 'setIgData', columns: IG_COLS },
+  { key: 'google-news', label: 'Google News', dataKey: 'gnData', setterKey: 'setGnData', columns: GN_COLS },
 ];
 
 export default function MasterScraper() {

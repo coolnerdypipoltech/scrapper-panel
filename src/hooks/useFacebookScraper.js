@@ -51,7 +51,6 @@ export function useFacebookScraper() {
         for (let index = 0; index < items.length; index++) {
           items[index].timestamp = new Date(items[index].timestamp * 1000);
         }
-        console.log(items.map(item => item.timestamp));
         setFbData(prev => [...prev, ...tagItems(items)]);
       }
     } catch (err) {

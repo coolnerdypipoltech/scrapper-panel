@@ -62,7 +62,6 @@ export function useMasterScraper() {
         key: 'tiktok',
         enabled: Boolean(ttActorId.trim()),
         runTask: async () => {
-          console.log(TT_DATE_POSTED[dateRange] ?? '0');
           const base = {
             commentsPerPost: 0, excludePinnedPosts: false,
             maxFollowersPerProfile: 0, maxFollowingPerProfile: 0,

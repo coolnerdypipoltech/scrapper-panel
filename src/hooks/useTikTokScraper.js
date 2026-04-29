@@ -11,7 +11,7 @@ export function useTikTokScraper() {
 
   const [queries,    setQueries]    = useState([]);
   const [max,        setMax]        = useState(50);
-  const [searchType, setSearchType] = useState('hashtag');
+  const [searchType, setSearchType] = useState('keyword');
   const [dateRange,  setDateRange]  = useState('');
   const [loading,    setLoading]    = useState(false);
   const [error,      setError]      = useState('');
@@ -41,7 +41,15 @@ export function useTikTokScraper() {
       const input = searchType === 'hashtag'
         ? { ...base, hashtags: queries }
         : { ...base, searchQueries: queries };
+
+
       const items = await fetchActorItems(ttActorId, input);
+      for (const item of items) {
+        if(item.text === ""){
+          item.text = "Sin Texto";
+        }
+      }
+
       setTtData(prev => [...prev, ...tagItems(items)]);
     } catch (err) {
       setError(err.message);

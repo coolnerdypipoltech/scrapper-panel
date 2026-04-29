@@ -95,7 +95,6 @@ export const IG_COLS = [
 ];
 
 export const GN_COLS = [
-  { key: "image", label: "Imagen", type: "gn-thumbnail", linkKey: "url" },
   { key: "title", label: "Título", type: "text", truncate: true },
   { key: "source", label: "Fuente", type: "text" },
   { key: "description", label: "Descripción", type: "text", truncate: true },

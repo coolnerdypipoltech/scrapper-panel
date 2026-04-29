@@ -45,6 +45,7 @@ export default function DataTable({ data, columns, onDelete }) {
     <button className="btn-delete" onClick={() => onDelete(rowData._id)} title="Eliminar fila">✕</button>
   );
 
+
   return (
     <>
       <BubbleChart data={data} columns={columns} />
@@ -56,7 +57,7 @@ export default function DataTable({ data, columns, onDelete }) {
         globalFilterFields={globalFilterFields}
         header={header}
         removableSort
-        paginator
+        paginator={data.length > 10}
         rows={25}
         rowsPerPageOptions={[10, 25, 50, 100]}
         emptyMessage="Sin resultados"

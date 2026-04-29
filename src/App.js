@@ -9,7 +9,7 @@ import InstagramScraper from './scrapers/InstagramScraper';
 import GoogleNewsScraper from './scrapers/GoogleNewsScraper';
 import MasterScraper from './scrapers/MasterScraper';
 import './App.css';
-import cnpLogo from "./assets/cnp.png";
+import cnpLogo from "./assets/Logo_CNP.svg";
 
 import 'primeicons/primeicons.css';
         
@@ -23,11 +23,16 @@ function Shell() {
     document.body.classList.toggle('theme-light', lightMode);
   }, [lightMode]);
 
+  React.useEffect(() => {
+    
+  })
+
   return (
+    <>
     <div className="app">
       <header className="app-header">
         <img src={cnpLogo} alt="CNP Logo" style={{height: "50px"}} />
-        <h1 style={{alignSelf:"center"}}>Cooltural Listening</h1>
+        <h1 style={{alignSelf:"center"}}>COOLTURAL LISTENING</h1>
 
       </header>
 
@@ -35,10 +40,7 @@ function Shell() {
       <StatsRow />
 
       <div className="tab-bar">
-        <button className={`tab-btn ${activeTab === 'master'   ? 'active' : ''}`} onClick={() => setActiveTab('master')}>
-          <i className="pi pi-globe color-accent"></i>
-          Maestro {masterCount > 0 && <span className="badge">{masterCount}</span>}
-        </button>
+
         <button className={`tab-btn ${activeTab === 'youtube'  ? 'active' : ''}`} onClick={() => setActiveTab('youtube')}>
           <i className="pi pi-youtube color-accent"></i>
           YouTube {ytData.length > 0 && <span className="badge">{ytData.length}</span>}
@@ -72,7 +74,15 @@ function Shell() {
       {activeTab === 'facebook' && <FacebookScraper />}
       {activeTab === 'instagram' && <InstagramScraper />}
       {activeTab === 'google-news' && <GoogleNewsScraper />}
+
+      
     </div>
+    
+            <footer className="app-footer">
+
+        <span className="app-footer__copy">&copy; {new Date().getFullYear()} Cool Nerdy People. Todos los derechos reservados.</span>
+      </footer>
+    </>
   );
 }
 

@@ -15,7 +15,7 @@ export default function Settings() {
   return (
     <section className="card settings-section">
       <button className="settings-toggle" onClick={() => setSettingsOpen(o => !o)}>
-        <span>Configuración</span>
+        <span>CONFIGURACIÓN</span>
         <span className="chevron">{settingsOpen ? '▲' : '▼'}</span>
       </button>
 
@@ -34,7 +34,7 @@ export default function Settings() {
                 spellCheck={false}
               />
               <button className="btn-icon" onClick={() => setApiVisible(v => !v)}>
-                {apiVisible ? '🙈' : '👁'}
+                {apiVisible ? '👁' : '👁'}
               </button>
             </div>
             <p className="field-hint">Se guarda en localStorage de tu navegador. No uses en equipos compartidos.</p>

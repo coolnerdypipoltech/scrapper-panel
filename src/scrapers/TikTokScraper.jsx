@@ -16,8 +16,9 @@ export default function TikTokScraper() {
           <TagsInput queries={queries} onQueriesChange={setQueries} platform="tiktok" />
 
           <select className="select-input" value={searchType} onChange={e => setSearchType(e.target.value)}>
-            <option value="hashtag">Hashtag</option>
             <option value="keyword">Keyword</option>
+            <option value="hashtag">Hashtag</option>
+            
           </select>
 
           <label className="inline-label">

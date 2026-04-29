@@ -67,16 +67,29 @@ function getNumericValue(item, col) {
 }
 
 const TOOLTIP_STYLE = {
-  backgroundColor: '#1c2035',
+  backgroundColor: '#F2F1EF',
   borderColor: '#252a45',
-  borderWidth: 1,
-  titleColor: '#dde1f5',
-  bodyColor: '#7880a8',
+  borderWidth: 0,
+  titleColor: ' #252a45',
+  bodyColor: '#080807',
   padding: 10,
 };
 
+function detectArcDefaults(columns, numericCols, textCols) {
+  const keys = columns.map(c => c.key);
+  if (keys.includes('channelName') && keys.includes('viewCount'))
+    return { valueKey: 'viewCount', labelKey: 'channelName' };
+  if (keys.includes('playCount') && keys.includes('text'))
+    return { valueKey: 'playCount', labelKey: 'text' };
+  if (keys.includes('reactions') && keys.includes('message'))
+    return { valueKey: 'reactions_count', labelKey: 'message' };
+  if (keys.includes('likesCount') && keys.includes('type'))
+    return { valueKey: 'likesCount', labelKey: 'type' };
+  return { valueKey: numericCols[0]?.key ?? '', labelKey: textCols[0]?.key ?? '' };
+}
+
 export default function BubbleChart({ data, columns }) {
-  const [chartType, setChartType] = useState('bubble');
+  const [chartType, setChartType] = useState('doughnut');
 
   const numericCols = useMemo(
     () => columns.filter(c => c.type === 'number' || c.type === 'reactions'),
@@ -93,8 +106,8 @@ export default function BubbleChart({ data, columns }) {
   const [rKey, setRKey] = useState(() => numericCols[2]?.key ?? numericCols[1]?.key ?? numericCols[0]?.key ?? '');
 
   // Arc chart state
-  const [valueKey, setValueKey] = useState(() => numericCols[0]?.key ?? '');
-  const [labelKey, setLabelKey] = useState(() => textCols[0]?.key ?? '');
+  const [valueKey, setValueKey] = useState(() => detectArcDefaults(columns, numericCols, textCols).valueKey);
+  const [labelKey, setLabelKey] = useState(() => detectArcDefaults(columns, numericCols, textCols).labelKey);
 
   // Reset when platform (columns) changes
   const prevCols = React.useRef(numericCols);
@@ -103,8 +116,9 @@ export default function BubbleChart({ data, columns }) {
     setXKey(numericCols[0]?.key ?? '');
     setYKey(numericCols[1]?.key ?? numericCols[0]?.key ?? '');
     setRKey(numericCols[2]?.key ?? numericCols[1]?.key ?? numericCols[0]?.key ?? '');
-    setValueKey(numericCols[0]?.key ?? '');
-    setLabelKey(textCols[0]?.key ?? '');
+    const arcDef = detectArcDefaults(columns, numericCols, textCols);
+    setValueKey(arcDef.valueKey);
+    setLabelKey(arcDef.labelKey);
   }
 
   const linkKey = useMemo(() => {
@@ -224,14 +238,14 @@ export default function BubbleChart({ data, columns }) {
     },
     scales: {
       x: {
-        title: { display: true, text: xLabel, color: '#7880a8', font: { size: 11 } },
+        title: { display: true, text: xLabel, color: '##EE5243', font: { size: 11 } },
         grid: { color: 'rgba(255,255,255,0.05)' },
-        ticks: { color: '#7880a8', font: { size: 10 } },
+        ticks: { color: '#EE5243', font: { size: 10 } },
       },
       y: {
-        title: { display: true, text: yLabel, color: '#7880a8', font: { size: 11 } },
+        title: { display: true, text: yLabel, color: '##EE5243', font: { size: 11 } },
         grid: { color: 'rgba(255,255,255,0.05)' },
-        ticks: { color: '#7880a8', font: { size: 10 } },
+        ticks: { color: '##EE5243', font: { size: 10 } },
       },
     },
   }), [xLabel, yLabel, rLabel, onHover]);
@@ -245,11 +259,12 @@ export default function BubbleChart({ data, columns }) {
       legend: {
         display: true,
         position: 'right',
+        align: 'center',
         labels: {
-          color: '#7880a8',
-          font: { size: 10 },
-          boxWidth: 12,
-          padding: 10,
+          color: '#EE5243',
+          font: { size: 13 },
+          boxWidth: 14,
+          padding: 14,
         },
       },
       tooltip: {
@@ -266,7 +281,7 @@ export default function BubbleChart({ data, columns }) {
       scales: {
         r: {
           grid: { color: 'rgba(255,255,255,0.07)' },
-          ticks: { color: '#7880a8', font: { size: 9 }, backdropColor: 'transparent' },
+          ticks: { color: '#EE5243', font: { size: 9 }, backdropColor: 'transparent' },
         },
       },
     } : {}),
